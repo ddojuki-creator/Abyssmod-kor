@@ -1,53 +1,31 @@
-# AbyssMod
+# AbyssMod-kor
 
-> 🎮 鸡渊汉化MOD
+> 도트어비스 한국어 번역 MOD
 
-本仓库适用于 **Windows 平台 DMM Game Player 端**
+본 저장소는 Windows 플랫폼의 DMM Game Player 버전에 적용되는 AbyssMod 한국어판입니다.
 
-使用时如遇到问题请务必先阅读下面的[常见问题](#-常见问题)
+현재 한국어 번역은 제작 중이며, 번역되지 않은 구간은 일본어 원문으로 표시될 수 있습니다. 중국어 번역 데이터는 포함하지 않습니다.
 
----
+## 기능
 
-## 📋 目录
+- 스토리 번역
+- 게임 내 동적 모자이크 비활성화
+- 게임 시작 시 볼륨 알림 건너뛰기
+- 스토리 캐릭터 음성 끊김 방지
+- 게임 시작 시 타이틀 애니메이션 비활성화
 
-- [功能特性](#-功能特性)
-- [快速开始](#-快速开始)
-- [配置项](#-配置项)
-- [快捷键](#-快捷键)
-- [翻译数据](#-翻译数据)
-- [常见问题](#-常见问题)
+## 설치
 
----
+1. DMM Game Player 버전의 게임을 설치합니다.
+2. Releases 페이지에서 최신 `AbyssMod.7z`를 다운로드합니다.
+3. 압축 파일을 게임 실행 파일과 같은 폴더에 풉니다.
+4. 평소처럼 게임을 실행합니다.
 
-## ✨ 功能特性
+압축 해제 후 구조는 대략 다음과 같습니다.
 
-- 剧情翻译
-- 关闭游戏内动态马赛克
-- 跳过进游戏时的音量提醒
-- 剧情角色语音不中断
-- 关闭进游戏时的标题动画
-
----
-
-## 🚀 快速开始
-
-### 1. 安装游戏客户端
-
-确保已安装 DMM Game Player 版游戏，并知晓游戏可执行文件所在的目录
-
-### 2. 下载插件
-
-前往 [Releases](https://github.com/anosu/AbyssMod/releases) 页面，找到最新版本（带有绿色 `Latest` 标识），展开 `Assets` 下载 `AbyssMod.7z` 压缩包
-
-> ⚠️ 不要下载 `Source code`，那是源码
-
-### 3. 安装
-
-将压缩包解压到游戏根目录（和游戏 `.exe` 同级），解压后目录结构大致如下：
-
-```
-游戏根目录/
-├── 游戏.exe
+```text
+게임 루트 폴더/
+├── 게임.exe
 ├── winhttp.dll
 └── BepInEx/
     ├── core/
@@ -56,109 +34,63 @@
     └── config/
 ```
 
-### 4. 启动游戏
+처음 실행하면 `BepInEx\config\AbyssMod.cfg` 설정 파일이 생성됩니다.
 
-**正常启动游戏**（你之前怎么启动现在还是怎么启动），如果这是你第一次安装 BepInEx，启动时会自动下载适配当前 Unity 版本的补丁，期间只显示一个控制台窗口，稍等片刻即可
+## 기본 설정
 
-> ⚠️ 如果你用了加速器（如 ACGP），控制台可能出现红色报错，说明可能无法直连 BepInEx 官网，请开启代理/梯子后重试
+한국어판 기본 번역 설정은 다음과 같습니다.
 
-### 5. 配置文件
+```ini
+[Translation]
+Enabled = true
+CDN = https://raw.githubusercontent.com/ddojuki-creator/dot-abyss-korean/refs/heads/main/translations
+Language = ko_KR
+```
 
-首次运行后，`BepInEx\config\` 目录下会生成两个配置文件：
+번역 데이터는 별도 저장소에서 관리합니다.
 
-| 文件           | 用途                                 |
-| -------------- | ------------------------------------ |
-| `BepInEx.cfg`  | BepInEx 框架配置（如隐藏控制台窗口） |
-| `AbyssMod.cfg` | 插件功能配置（翻译、字体、马赛克等） |
+- https://github.com/ddojuki-creator/dot-abyss-korean
 
----
+## 설정 항목
 
-## ⚙️ 配置项
+### General
 
-### `[General]`
+| 항목 | 기본값 | 설명 |
+| --- | --- | --- |
+| `DynamicMosaic` | `false` | 게임 내 동적 모자이크를 활성화할지 여부 |
+| `SoundCaution` | `false` | 게임 시작 시 볼륨 알림 팝업을 표시할지 여부 |
+| `VoiceInterruption` | `false` | 스토리에서 다음 무음 텍스트가 재생될 때 현재 캐릭터 음성을 중단할지 여부 |
+| `TitleMovie` | `true` | 게임 시작 시 타이틀 애니메이션을 재생할지 여부 |
 
-| 配置项              | 默认值  | 说明               |
-| ------------------- | ------- | ------------------ |
-| `DynamicMosaic`     | `false` | 是否启用动态马赛克 |
-| `SoundCaution`      | `false` | 是否弹出音量提醒   |
-| `VoiceInterruption` | `false` | 是否启用语音中断   |
-| `TitleMovie`        | `true`  | 是否播放标题动画   |
+### Translation
 
-### `[Translation]`
+| 항목 | 기본값 | 설명 |
+| --- | --- | --- |
+| `Enabled` | `true` | 게임 내 스토리 번역을 활성화할지 여부 |
+| `CDN` | `https://raw.githubusercontent.com/ddojuki-creator/dot-abyss-korean/refs/heads/main/translations` | 번역 데이터를 불러올 CDN 주소 |
+| `Language` | `ko_KR` | 번역 언어 |
 
-| 配置项     | 可选项                                       | 默认值                                                                                      | 说明                                                                    |
-| ---------- | -------------------------------------------- | ------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `Enabled`  | `true`（开启），`false`（关闭）              | `true`                                                                                      | 是否开启游戏内剧情翻译                                                  |
-| `CDN`      | 任意有效的 CDN URL 地址                      | `https://raw.githubusercontent.com/anosu/dotabyss-translation/refs/heads/main/translations` | 翻译数据 CDN 地址                                                       |
-| `Language` | `zh_Hans`（简体中文），`zh_Hant`（繁體中文） | `zh_Hans`                                                                                   | 翻译语言，支持 `zh_Hans` 简体中文与`zh_Hant` 繁體中文（群友"戀曲"提供） |
+### Translation.Font
 
-### `[Translation.Font]`
+| 항목 | 기본값 | 설명 |
+| --- | --- | --- |
+| `AssetBundlePath` | `AbyssMod/fonts/ttcuyuanj` | TMP 폰트 AssetBundle 경로 |
 
-| 配置项            | 默认值                     | 说明                                                |
-| ----------------- | -------------------------- | --------------------------------------------------- |
-| `AssetBundlePath` | `AbyssMod/fonts/ttcuyuanj` | TMP 字体 AssetBundle 路径（相对插件目录或绝对路径） |
+## 단축키
 
----
+| 단축키 | 기능 |
+| --- | --- |
+| `F8` | 스토리 번역 켜기/끄기 |
+| `F9` | 음성 끊김 켜기/끄기 |
+| `F10` | 설정 파일 핫 리로드 |
 
-## ⌨️ 快捷键
+## 중국어가 표시될 때
 
-| 快捷键 | 功能              |
-| ------ | ----------------- |
-| `F8`   | 开启/关闭剧情翻译 |
-| `F9`   | 开启/关闭语音中断 |
-| `F10`  | 热重载配置文件    |
+한국어판을 처음 설치했는데 중국어가 표시되면 아래를 먼저 확인하세요.
 
----
+1. `BepInEx\config\AbyssMod.cfg`에서 `CDN`이 한국어 번역 저장소를 가리키는지 확인합니다.
+2. `Language = ko_KR`인지 확인합니다.
+3. 기존 중국어판 DLL이나 이전 `AbyssMod` 폴더가 남아 있지 않은지 확인합니다.
+4. `BepInEx\plugins\AbyssMod\cache` 폴더가 있다면 삭제 후 다시 실행합니다.
 
-## 📦 翻译数据
-
-翻译文件托管在独立仓库中，与插件本体分离：
-
-[dotabyss-translation](https://github.com/anosu/dotabyss-translation)
-
----
-
-## ❓ 常见问题
-
-<details>
-<summary><b>启动时控制台窗口出现红色报错</b></summary>
-通常是 BepInEx 无法连接其官网下载 Unity 补丁，请开启代理/梯子后重启游戏
-
-也可能是初始化文件是网络波动导致下载的文件损坏，此时可以尝试删除Mod文件然后重新安装
-
-</details>
-
-<details>
-<summary><b>如何隐藏控制台窗口</b></summary>
-编辑 <code>BepInEx\config\BepInEx.cfg</code>，找到 <code>[Logging.Console]</code>，将 <code>Enabled</code> 设为 <code>false</code>
-</details>
-
-<details>
-<summary><b>无法连接Github加载翻译</b></summary>
-<ul>
-    <li>
-    可以尝试去网络上找一些Github镜像或者加速站点，如 <code>https://gh-proxy.com</code> 等，然后将CDN地址修改为镜像后的地址，如 <code>https://gh-proxy.com/https://raw.githubusercontent.com/anosu/dotabyss-translation/refs/heads/main/translations</code>
-    </li>
-    <li>
-    也可以在 <code>AbyssMod.cfg</code> 中将 <code>[Translation]</code> 部分的 <code>CDN</code> 修改为红凯提供的Gitee源： <code>https://raw.giteeusercontent.com/inv1ncible/quiet-rapture/raw/master/Backroom</code>，同时将 <code>[Translation.Crypto]</code> 部分的 <code>Tag</code> 设为 <code>ENC:</code>，<code>Key</code> 设为 <code>woshitonghuadawang</code>
-    </li>
-</ul>
-
-> 如果镜像站可用建议优先使用镜像站
-
-</details>
-
-<details>
-<summary><b>更改成繁體中文</b></summary>
-<code>BepInEx\config\AbyssMod.cfg</code> 中 <code>Language=zh_Hans</code> 改成 <code>Language=zh_Hant</code>
-
-</details>
-
-### 社群
-
-- QQ群：[731843659](https://qm.qq.com/q/u80uVbzfNK)
-- 海外詢問： 添加Discord好友 :.lienchu9420（Lienchu恋曲）
-
----
-
-> 💬 有问题可以提交 [Issue](https://github.com/anosu/AbyssMod/issues) 或直接在 QQ 群里问
+번역되지 않은 구간이 일본어로 보이는 것은 정상입니다. 아직 한국어 번역이 완료되지 않은 파일입니다.

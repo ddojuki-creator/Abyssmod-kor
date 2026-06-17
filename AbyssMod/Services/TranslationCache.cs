@@ -132,7 +132,7 @@ namespace AbyssMod.Services
                 Logger.Warn(
                     "No local manifest cache available, will fetch without hash verification."
                 );
-                Toast.Warn("翻译服务", "翻译清单不可用，将直接请求翻译");
+                Toast.Warn("번역 서비스", "번역 manifest를 사용할 수 없어 번역 파일을 직접 요청합니다");
                 return;
             }
 
@@ -145,7 +145,7 @@ namespace AbyssMod.Services
                     Logger.Info(
                         $"Loaded cached manifest from local ({_language}). Hash: {_manifest.Hash}"
                     );
-                    Toast.Warn("翻译服务", "无法连接远程，使用本地翻译清单");
+                    Toast.Warn("번역 서비스", "원격 연결 실패, 로컬 번역 manifest를 사용합니다");
                 }
                 else
                 {

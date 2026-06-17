@@ -10,8 +10,8 @@ using Utility.Toast;
 namespace AbyssMod.Services;
 
 /// <summary>
-/// 翻译管理器：协调翻译数据的加载、缓存和查询。
-/// 内部持有所有翻译数据。
+/// Translation manager: coordinates loading, caching, and lookup for translation data.
+/// Holds all loaded translation dictionaries internally.
 /// </summary>
 public class TranslationManager
 {
@@ -67,7 +67,7 @@ public class TranslationManager
         else
         {
             Logger.Warn("Character names translation load failed");
-            Toast.Warn("加载失败", "角色名称翻译加载失败");
+            Toast.Warn("로드 실패", "캐릭터 이름 번역 로드 실패");
         }
 
         if (titleTask.Result != null)
@@ -78,7 +78,7 @@ public class TranslationManager
         else
         {
             Logger.Warn("Novel titles translation load failed");
-            Toast.Warn("加载失败", "剧情标题翻译加载失败");
+            Toast.Warn("로드 실패", "스토리 제목 번역 로드 실패");
         }
 
         if (descTask.Result != null)
@@ -89,7 +89,7 @@ public class TranslationManager
         else
         {
             Logger.Warn("Novel descriptions translation load failed");
-            Toast.Warn("加载失败", "剧情概括翻译加载失败");
+            Toast.Warn("로드 실패", "스토리 개요 번역 로드 실패");
         }
     }
 
@@ -118,7 +118,7 @@ public class TranslationManager
             else
             {
                 Logger.Warn($"Translations loaded failed: {novelId}");
-                Toast.Warn("加载失败", $"剧本ID: {novelId}");
+                Toast.Warn("로드 실패", $"스토리 ID: {novelId}");
             }
             tcs.SetResult();
         }
